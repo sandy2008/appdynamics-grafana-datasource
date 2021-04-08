@@ -1,0 +1,30 @@
+{
+  "name": "appdynamics-grafana-datasource",
+  "version": "1.0.3",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "watch": "webpack --mode development --watch"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/grafana": "github:CorpGlory/types-grafana.git",
+    "@types/lodash": "^4.14.74",
+    "angular": "^1.6.5",
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.1",
+    "grafana-sdk-mocks": "github:grafana/grafana-sdk-mocks",
+    "ng-annotate-webpack-plugin": "^0.3.0",
+    "replace-in-file-webpack-plugin": "^1.0.6",
+    "request": "^2.81.0",
+    "ts-loader": "^4.3.0",
+    "typescript": "^2.1.4",
+    "webpack": "4.28.4",
+    "webpack-cli": "3.2.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
+  }
+}
