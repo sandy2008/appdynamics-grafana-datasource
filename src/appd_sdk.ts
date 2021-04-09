@@ -14,6 +14,7 @@ export class AppDynamicsSDK {
     password: string;
     tenant: string;
     url: string;
+    text: string;
 
     constructor(instanceSettings, private backendSrv, private templateSrv) {
 
@@ -21,6 +22,7 @@ export class AppDynamicsSDK {
         this.username = instanceSettings.username;
         this.password = instanceSettings.password;
         this.url = instanceSettings.url;
+        this.text = instanceSettings.text;
         this.tenant = instanceSettings.tenant;
 
     }
