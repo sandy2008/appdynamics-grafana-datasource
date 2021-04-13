@@ -35,7 +35,7 @@ export class AppDynamicsSDK {
 
         // For each one of the metrics the user entered:
         const requests = options.targets.map((target) => {
-            return new Promise((resolve) => {
+            return new Promise<void>((resolve) => {
 
                 if (target.hide) { // If the user clicked on the eye icon to hide, don't fetch the metrics.
                     return resolve();
@@ -76,9 +76,11 @@ export class AppDynamicsSDK {
             method: 'GET',
             params: {
                 'metric-path': templatedMetric,
-                'time-range-type': 'BETWEEN_TIMES',
-                'start-time': startTime,
-                'end-time': endTime,
+                // 'time-range-type': 'BETWEEN_TIMES',
+                'time-range-type': 'BEFORE_NOW',
+                'duration-in-mins': 10,
+                // 'start-time': startTime,
+                // 'end-time': endTime,
                 'rollup': 'false',
                 'output': 'json'
             },
@@ -204,9 +206,11 @@ export class AppDynamicsSDK {
                 method: 'GET',
                 params: {
                     'metric-path': metricPath,
-                    'time-range-type': 'BETWEEN_TIMES',
-                    'start-time': startTime,
-                    'end-time': endTime,
+                    // 'time-range-type': 'BETWEEN_TIMES',
+                    'time-range-type': 'BEFORE_NOW',
+                    'duration-in-mins': 10,
+                    // 'start-time': startTime,
+                    // 'end-time': endTime,
                     'rollup': 'true',
                     'output': 'json'
                 },

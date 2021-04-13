@@ -63,3 +63,7 @@ export function getFirstTemplated(query) {
     }
     return query;
 }
+
+export function getUrlFromController(controller) {
+    return null;
+}
