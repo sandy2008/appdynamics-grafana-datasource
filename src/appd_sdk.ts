@@ -190,8 +190,8 @@ export class AppDynamicsSDK {
     }
 
     filterBtWithoutPerfData(appName: string, tierName: string, businessTransactions: any[]) {
-        const startTime = Math.ceil(dateMath.parse(this.templateSrv.timeRange.from));
-        const endTime = Math.ceil(dateMath.parse(this.templateSrv.timeRange.to));
+        // const startTime = Math.ceil(dateMath.parse(this.templateSrv.timeRange.from));
+        // const endTime = Math.ceil(dateMath.parse(this.templateSrv.timeRange.to));
 
         const requests: Promise<any>[] = [];
 

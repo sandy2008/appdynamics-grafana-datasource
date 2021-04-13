@@ -119,6 +119,7 @@ var AppDynamicsSDK = /** @class */ (function () {
         this.username = instanceSettings.username;
         this.password = instanceSettings.password;
         this.url = instanceSettings.url;
+        this.text = instanceSettings.text;
         this.tenant = instanceSettings.tenant;
     }
     AppDynamicsSDK.prototype.query = function (options) {
@@ -167,9 +168,11 @@ var AppDynamicsSDK = /** @class */ (function () {
             method: 'GET',
             params: {
                 'metric-path': templatedMetric,
-                'time-range-type': 'BETWEEN_TIMES',
-                'start-time': startTime,
-                'end-time': endTime,
+                // 'time-range-type': 'BETWEEN_TIMES',
+                'time-range-type': 'BEFORE_NOW',
+                'duration-in-mins': 10,
+                // 'start-time': startTime,
+                // 'end-time': endTime,
                 'rollup': 'false',
                 'output': 'json'
             },
@@ -270,8 +273,8 @@ var AppDynamicsSDK = /** @class */ (function () {
         });
     };
     AppDynamicsSDK.prototype.filterBtWithoutPerfData = function (appName, tierName, businessTransactions) {
-        var startTime = Math.ceil(grafana_app_core_utils_datemath__WEBPACK_IMPORTED_MODULE_0__["parse"](this.templateSrv.timeRange.from));
-        var endTime = Math.ceil(grafana_app_core_utils_datemath__WEBPACK_IMPORTED_MODULE_0__["parse"](this.templateSrv.timeRange.to));
+        // const startTime = Math.ceil(dateMath.parse(this.templateSrv.timeRange.from));
+        // const endTime = Math.ceil(dateMath.parse(this.templateSrv.timeRange.to));
         var requests = [];
         var _loop_1 = function () {
             var businessTransaction = businessTransactions[i];
@@ -282,9 +285,11 @@ var AppDynamicsSDK = /** @class */ (function () {
                 method: 'GET',
                 params: {
                     'metric-path': metricPath,
-                    'time-range-type': 'BETWEEN_TIMES',
-                    'start-time': startTime,
-                    'end-time': endTime,
+                    // 'time-range-type': 'BETWEEN_TIMES',
+                    'time-range-type': 'BEFORE_NOW',
+                    'duration-in-mins': 10,
+                    // 'start-time': startTime,
+                    // 'end-time': endTime,
                     'rollup': 'true',
                     'output': 'json'
                 },
@@ -742,7 +747,7 @@ var AppDynamicsQueryCtrl = /** @class */ (function (_super) {
 /*!******************!*\
   !*** ./utils.ts ***!
   \******************/
-/*! exports provided: isContainsBraces, isContainsParenthesis, splitTemplateQuery, resolveMetricQueries, getFirstTemplated */
+/*! exports provided: isContainsBraces, isContainsParenthesis, splitTemplateQuery, resolveMetricQueries, getFirstTemplated, getUrlFromController */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -752,6 +757,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "splitTemplateQuery", function() { return splitTemplateQuery; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resolveMetricQueries", function() { return resolveMetricQueries; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getFirstTemplated", function() { return getFirstTemplated; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getUrlFromController", function() { return getUrlFromController; });
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "lodash");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -809,6 +815,9 @@ function getFirstTemplated(query) {
         }
     }
     return query;
+}
+function getUrlFromController(controller) {
+    return null;
 }
 
 
